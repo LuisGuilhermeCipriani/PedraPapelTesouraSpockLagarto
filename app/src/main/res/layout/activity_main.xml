@@ -115,6 +115,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center"
+        android:onClick="textViewStatusClick"
         android:text="Escolha uma opção..."
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
