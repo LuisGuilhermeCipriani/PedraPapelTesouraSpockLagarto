@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA},
             {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA},
             {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE},
-    }
+    };
     private Integer pontosComputador = 0;
     private Integer pontosHumano = 0;
 
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         rodada(Jogada.Papel);
     }
     public void buttonTesouraClick(View view){
-        rodada(Jogada.Tesoura;
+        rodada(Jogada.Tesoura);
     }
 
     public void rodada(Jogada jogada){
@@ -81,5 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 pontosComputador += 1;
                 break;
         }
+        atualizaStatus();
+    }
+
+    private void atualizaStatus(){
+        progressBarComputador.setProgress(pontosComputador);
+        progressBarHumano.setProgress(pontosHumano);
     }
 }
