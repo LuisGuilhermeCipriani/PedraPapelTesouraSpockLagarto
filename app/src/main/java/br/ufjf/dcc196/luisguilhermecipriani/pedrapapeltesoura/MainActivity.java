@@ -11,17 +11,20 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public enum Jogada{
+    public enum Jogada {
         PEDRA(0), Papel(1), Tesoura(2);
         private final int valor;
+
         Jogada(int valor) {
             this.valor = valor;
         }
     }
-    public enum Resultado{
+
+    public enum Resultado {
         DERROTA(-1), EMPATE(0), VITORIA(1);
         private final int valor;
-        Resultado(int valor){
+
+        Resultado(int valor) {
             this.valor = valor;
         }
     }
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewStatus;
 
     private Random dado = new Random();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,19 +61,21 @@ public class MainActivity extends AppCompatActivity {
         textViewStatus = findViewById(R.id.textViewStatus);
     }
 
-    public void buttonPedraClick(View view){
+    public void buttonPedraClick(View view) {
         rodada(Jogada.PEDRA);
     }
-    public void buttonPapelClick(View view){
+
+    public void buttonPapelClick(View view) {
         rodada(Jogada.Papel);
     }
-    public void buttonTesouraClick(View view){
+
+    public void buttonTesouraClick(View view) {
         rodada(Jogada.Tesoura);
     }
 
-    public void rodada(Jogada jogada){
+    public void rodada(Jogada jogada) {
         Jogada jogadaComputador = Jogada.values()[dado.nextInt(3)];
-        switch (TABELA[jogada.valor][jogadaComputador.valor]){
+        switch (TABELA[jogada.valor][jogadaComputador.valor]) {
             case VITORIA:
                 pontosHumano += 3;
                 break;
@@ -84,8 +90,25 @@ public class MainActivity extends AppCompatActivity {
         atualizaStatus();
     }
 
-    private void atualizaStatus(){
+    private void atualizaStatus() {
         progressBarComputador.setProgress(pontosComputador);
         progressBarHumano.setProgress(pontosHumano);
+        if (pontosHumano < 15 && pontosComputador < 15) {
+            textViewStatus.setText("Escolha uma opção...");
+        } else if (pontosHumano >= 15 && pontosComputador < 15) {
+            textViewStatus.setText("O Humano venceu o torneio!");
+            iniciaTorneio();
+        } else if (pontosHumano < 15 && pontosHumano >= 15) {
+            textViewStatus.setText("O Computador venceu o torneio!");
+            iniciaTorneio();
+        } else {
+            textViewStatus.setText("O torneio terminou empatado!");
+            iniciaTorneio();
+        }
+    }
+
+    private void iniciaTorneio() {
+        pontosComputador = 0;
+        pontosHumano = 0;
     }
 }
