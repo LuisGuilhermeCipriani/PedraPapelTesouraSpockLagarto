@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     public enum Jogada {
-        PEDRA(0), Papel(1), Tesoura(2);
+        PEDRA(0), PAPEL(1), TESOURA(2), LAGARTO(3), SPOCK(4);
         private final int valor;
 
         Jogada(int valor) {
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonPedra;
     private Button buttonPapel;
     private Button buttonTesoura;
+    private Button buttonLagarto;
+    private Button buttonSpock;
 
     private ProgressBar progressBarComputador;
     private ProgressBar progressBarHumano;
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         buttonPedra = findViewById(R.id.buttonPedra);
         buttonPapel = findViewById(R.id.buttonPapel);
         buttonTesoura = findViewById(R.id.buttonTesoura);
+        buttonLagarto = findViewById(R.id.buttonLagarto);
+        buttonSpock = findViewById(R.id.buttonSpock);
         // componentes de saída
         progressBarComputador = findViewById(R.id.progressBarComputador);
         progressBarHumano = findViewById(R.id.progressBarHumano);
@@ -70,15 +74,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonPapelClick(View view) {
-        rodada(Jogada.Papel);
+        rodada(Jogada.PAPEL);
     }
 
     public void buttonTesouraClick(View view) {
-        rodada(Jogada.Tesoura);
+        rodada(Jogada.TESOURA);
+    }
+
+    public void buttonLagartoClick(View view) {
+        rodada(Jogada.LAGARTO);
+    }
+
+    public void buttonSpockClick(View view) {
+        rodada(Jogada.SPOCK);
     }
 
     public void rodada(Jogada jogada) {
-        Jogada jogadaComputador = Jogada.values()[dado.nextInt(3)];
+        Jogada jogadaComputador = Jogada.values()[dado.nextInt(5)];
         switch (TABELA[jogada.valor][jogadaComputador.valor]) {
             case VITORIA:
                 pontosHumano += 3;
