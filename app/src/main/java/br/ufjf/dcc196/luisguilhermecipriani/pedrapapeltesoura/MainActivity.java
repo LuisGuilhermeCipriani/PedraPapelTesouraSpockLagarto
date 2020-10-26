@@ -33,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static final Resultado TABELA[][] = {
-            {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA},
-            {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA},
-            {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE},
+            {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA, Resultado.VITORIA, Resultado.DERROTA},
+            {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA, Resultado.DERROTA, Resultado.VITORIA},
+            {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE, Resultado.VITORIA, Resultado.DERROTA},
+            {Resultado.DERROTA, Resultado.VITORIA, Resultado.DERROTA, Resultado.EMPATE, Resultado.VITORIA},
+            {Resultado.VITORIA, Resultado.DERROTA, Resultado.VITORIA, Resultado.DERROTA, Resultado.EMPATE},
     };
     private Integer pontosComputador = 0;
     private Integer pontosHumano = 0;
