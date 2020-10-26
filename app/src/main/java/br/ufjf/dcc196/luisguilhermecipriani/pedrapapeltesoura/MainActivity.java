@@ -97,20 +97,20 @@ public class MainActivity extends AppCompatActivity {
             case VITORIA:
                 pontosHumano += 3;
                 Toast.makeText(this,
-                        "O Humano ganhou",
+                        informaRegras(jogada, jogadaComputador),
                         Toast.LENGTH_SHORT).show();
                 break;
             case DERROTA:
                 pontosComputador += 3;
                 Toast.makeText(this,
-                        "O Computador ganhou",
+                        informaRegras(jogada, jogadaComputador),
                         Toast.LENGTH_SHORT).show();
                 break;
             case EMPATE:
                 pontosHumano += 1;
                 pontosComputador += 1;
                 Toast.makeText(this,
-                        "Empate",
+                        informaRegras(jogada, jogadaComputador),
                         Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         pontosHumano = 0;
     }
 
-    public void textViewStatusClick(View view){
+    public void textViewStatusClick(View view) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setTitle("Reiniciar o torneio?");
         dialogBuilder.setMessage("Deseja reiniciar o torneio zerando o estado atual?");
@@ -153,5 +153,67 @@ public class MainActivity extends AppCompatActivity {
                 });
         dialogBuilder.create();
         dialogBuilder.show();
+    }
+
+    public String informaRegras(Jogada jogada, Jogada jogadaComputador) {
+        String mensagem = mensagem = "Empate - Ambos escolheram a mesma opção";;
+        switch (jogada) {
+            case PEDRA:
+                if (jogadaComputador.valor == 1) {
+                    mensagem = "Computador ganhou - Papel cobre pedra";
+                } else if (jogadaComputador.valor == 2) {
+                    mensagem = "Humano ganhou - Pedra amassa tesoura";
+                } else if (jogadaComputador.valor == 3) {
+                    mensagem = "Humano ganhou - Pedra esmaga lagarto";
+                } else if (jogadaComputador.valor == 4) {
+                    mensagem = "Computador ganhou - Spock vaporiza pedra";
+                }
+                break;
+            case PAPEL:
+                if (jogadaComputador.valor == 0) {
+                    mensagem = "Humano ganhou - Papel cobre pedra";
+                } else if (jogadaComputador.valor == 2) {
+                    mensagem = "Computador ganhou - Tesoura corta papel";
+                } else if (jogadaComputador.valor == 3) {
+                    mensagem = "Computador ganhou - Lagarto come papel";
+                } else if (jogadaComputador.valor == 4) {
+                    mensagem = "Humano ganhou - Papel refuta Spock";
+                }
+                break;
+            case TESOURA:
+                if (jogadaComputador.valor == 0) {
+                    mensagem = "Computador ganhou - Pedra amassa tesoura";
+                } else if (jogadaComputador.valor == 1) {
+                    mensagem = "Humano ganhou - Tesoura corta papel";
+                } else if (jogadaComputador.valor == 3) {
+                    mensagem = "Humano ganhou - Tesoura decapita lagarto";
+                } else if (jogadaComputador.valor == 4) {
+                    mensagem = "Computador ganhou - Spock derrete tesoura";
+                }
+                break;
+            case LAGARTO:
+                if (jogadaComputador.valor == 0) {
+                    mensagem = "Computador ganhou - Pedra esmaga lagarto";
+                } else if (jogadaComputador.valor == 1) {
+                    mensagem = "Humano ganhou - Lagarto come papel";
+                } else if (jogadaComputador.valor == 2) {
+                    mensagem = "Computador ganhou - Tesoura decapita lagarto";
+                } else if (jogadaComputador.valor == 4) {
+                    mensagem = "Humano ganhou - Lagarto envenena Spock";
+                }
+                break;
+            case SPOCK:
+                if (jogadaComputador.valor == 0) {
+                    mensagem = "Humano ganhou - Spock vaporiza pedra";
+                } else if (jogadaComputador.valor == 1) {
+                    mensagem = "Computador ganhou - Papel refuta Spock";
+                } else if (jogadaComputador.valor == 2) {
+                    mensagem = "Humano ganhou - Spock derrete tesoura";
+                } else if (jogadaComputador.valor == 3) {
+                    mensagem = "Computador ganhou - Lagarto envenena Spock";
+                }
+                break;
+        }
+        return mensagem;
     }
 }
