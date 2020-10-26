@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Pedra Papel Tesoura</string>
+    <string name="textView2">Pedra, Papel, Tesoura, Lagarto, Spock</string>
+    <string name="textView">Computador:</string>
+    <string name="buttonPapel">Papel</string>
+    <string name="buttonPedra">Pedra</string>
+    <string name="buttonLagarto">Lagarto</string>
+    <string name="buttonSpock">Spock</string>
+    <string name="buttonTesoura">Tesoura</string>
+    <string name="textViewStatus">Escolha uma opção...</string>
+    <string name="textView3">Humano:</string>
 </resources>
