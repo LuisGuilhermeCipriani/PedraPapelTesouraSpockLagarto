@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide(); // Retirada da barra de título
         // componentes de entrada
         buttonPedra = findViewById(R.id.buttonPedra);
         buttonPapel = findViewById(R.id.buttonPapel);
